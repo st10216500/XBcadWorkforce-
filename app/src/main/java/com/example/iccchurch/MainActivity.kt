@@ -22,11 +22,13 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
+        // Navigate to Login screen
         binding.btnLogin.setOnClickListener {
             val loginIntent = Intent(this, Login::class.java)
             startActivity(loginIntent)
         }
 
+        // Handle registration button click
         binding.button3.setOnClickListener {
             val firstName = binding.editTextFirstName.text.toString()
             val lastName = binding.editTextLastName.text.toString()
@@ -46,18 +48,27 @@ class MainActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val userId = auth.currentUser?.uid ?: return@addOnCompleteListener
-                    val user = hashMapOf(
-                        "firstName" to firstName,
-                        "lastName" to lastName,
-                        "email" to email,
-                        "phoneNumber" to phoneNumber
-                    )
+                    val userId = auth.currentUser?.uid
+                    if (userId != null) {
+                        val user = hashMapOf(
+                            "firstName" to firstName,
+                            "lastName" to lastName,
+                            "email" to email,
+                            "phoneNumber" to phoneNumber
+                        )
 
-                            Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(this, Login::class.java))
-                            finish()
-
+                        // Save user details to Firestore
+                        firestore.collection("users").document(userId)
+                            .set(user)
+                            .addOnSuccessListener {
+                                Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
+                                startActivity(Intent(this, Login::class.java))
+                                finish()
+                            }
+                            .addOnFailureListener { e ->
+                                Toast.makeText(this, "Failed to save user details: ${e.message}", Toast.LENGTH_SHORT).show()
+                            }
+                    }
                 } else {
                     Toast.makeText(this, "Registration Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }

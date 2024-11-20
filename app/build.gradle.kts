@@ -41,10 +41,12 @@ android {
         jvmTarget = "1.8"
     }
 
+
     lint {
         // You can specify different lint options here
         // For example, to ignore lint errors causing build failure
         abortOnError = false
+        baseline = file("lint-baseline.xml")
     }
 
 }
