@@ -47,9 +47,6 @@
             </intent-filter>
         </activity>
 
-
-
-        <!-- Add any other required services here -->
     </application>
 
 </manifest>

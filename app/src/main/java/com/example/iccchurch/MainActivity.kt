@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                                 Toast.makeText(this, "Failed to save user details: ${e.message}", Toast.LENGTH_SHORT).show()
                             }
                     }
-                    
+
                 } else {
                     Toast.makeText(this, "Registration Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
