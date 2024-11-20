@@ -17,11 +17,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up JDK (Java Development Kit)
+      # Step 2: Set up JDK 17 (Update this part to use JDK 17)
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: '11'
+          java-version: '17'  # Use Java 17 instead of 11
           distribution: 'temurin'
 
       # Step 3: Make Gradle wrapper executable
@@ -35,3 +35,4 @@ jobs:
       # Step 5: Run unit tests
       - name: Run Unit Tests
         run: ./gradlew test
+
