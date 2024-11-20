@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Home"
+        android:id="@+id/home"
+        android:icon="@drawable/baseline_home_filled_24"
+         />
+    <item
+        android:id="@+id/bible"
+        android:icon="@drawable/baseline_book_24"
+        android:title="Bible" />
+    <item
+        android:id="@+id/note"
+        android:icon="@drawable/baseline_edit_note_24"
+        android:title="Notes" />
+    <item
+        android:id="@+id/financial_donation"
+        android:icon="@drawable/baseline_attach_money_24"
+        android:title="Financial Donation" />
+    <item
+        android:id="@+id/announcement"
+        android:icon="@drawable/baseline_info_24"
+        android:title="Announcement" />
+<!--    <item-->
+<!--        android:id="@+id/event"-->
+<!--        android:icon="@drawable/baseline_event_24"-->
+<!--        android:title="Event/Leadership Management" />-->
+</menu>

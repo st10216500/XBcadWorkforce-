@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "867147491890",
+    "project_id": "iccchurchapp",
+    "storage_bucket": "iccchurchapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867147491890:android:67a3ad3e7bf7f01e1fea2b",
+        "android_client_info": {
+          "package_name": "com.example.iccchurch"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNYfvbYy7DEcuhVm2nBB1XtVKjnTL1vvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
