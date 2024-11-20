@@ -13,26 +13,25 @@ jobs:
     runs-on: ubuntu-latest  # Use Ubuntu for the build environment
 
     steps:
-      # Step 1: Check out the code
-      - name: Checkout code
-        uses: actions/checkout@v3
+      # Step 1: Checkout code
+      - name: Checkout
+        uses: actions/checkout@v4.1.0
 
-      # Step 2: Set up JDK 17 (Update this part to use JDK 17)
-      - name: Set up JDK
-        uses: actions/setup-java@v3
+      # Step 2: Set up Java JDK 17
+      - name: Setup Java JDK
+        uses: actions/setup-java@v3.13.0
         with:
-          java-version: '17'  # Use Java 17 instead of 11
-          distribution: 'temurin'
+          java-version: '17'
+          distribution: 'adopt'
 
-      # Step 3: Make Gradle wrapper executable
-      - name: Make Gradle Wrapper Executable
-        run: chmod +x ./gradlew
-
-      # Step 4: Build the project
+      # Step 3: Build with Gradle
       - name: Build with Gradle
         run: ./gradlew build
 
-      # Step 5: Run unit tests
-      - name: Run Unit Tests
-        run: ./gradlew test
+      # Step 4: Upload the APK as a build artifact
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.1.3
+        with:
+          name: AndroidCICD.apk
+          path: app/build/outputs/apk/app-debug.apk
 
