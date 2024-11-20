@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout code
+      # Step 1: Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -24,8 +24,12 @@ jobs:
           distribution: 'zulu'
           java-version: '11'
 
-      # Step 3: Cache Gradle dependencies
-      - name: Cache Gradle
+      # Step 3: Make Gradle Wrapper Executable
+      - name: Make Gradle Wrapper Executable
+        run: chmod +x ./gradlew
+
+      # Step 4: Cache Gradle dependencies
+      - name: Cache Gradle dependencies
         uses: actions/cache@v3
         with:
           path: ~/.gradle/caches
@@ -33,10 +37,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      # Step 4: Build the project
+      # Step 5: Build the project
       - name: Build with Gradle
         run: ./gradlew build
-
-      # Step 5: Run Unit Tests
-      - name: Run Tests
-        run: ./gradlew test
