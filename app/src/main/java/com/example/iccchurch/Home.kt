@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 
 class Home : Fragment() {
@@ -34,7 +35,7 @@ class Home : Fragment() {
 
         // Set up Logout Button
         logoutButton.setOnClickListener {
-            logoutUser()
+            showConfirmationDialog()
         }
 
         // Load announcement data
@@ -52,12 +53,30 @@ class Home : Fragment() {
         descriptionTextView.text = description
     }
 
+    private fun showConfirmationDialog() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Confirmation")
+        builder.setMessage("Are you sure you want to logout?")
+
+        builder.setPositiveButton("Yes") { dialog, _ ->
+            logoutUser()
+
+        }
+        builder.setNegativeButton("No") { dialog, _ ->
+
+            dialog.dismiss()
+        }
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
     private fun logoutUser() {
         // Sign out user using FirebaseAuth
         auth.signOut()
 
         // Redirect to Login Activity
-        val intent = Intent(requireContext(), MainActivity::class.java)
+        val intent = Intent(requireContext(), Login::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
 

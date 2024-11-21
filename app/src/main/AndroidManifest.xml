@@ -4,8 +4,6 @@
 
     <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <!-- Meta-data for Firebase Messaging -->
     <meta-data
@@ -47,6 +45,9 @@
             </intent-filter>
         </activity>
 
+
+
+        <!-- Add any other required services here -->
     </application>
 
 </manifest>

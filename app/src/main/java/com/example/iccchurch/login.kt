@@ -12,16 +12,16 @@ class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
 
-//    override fun onStart() {
-//        super.onStart()
-//        val currentUser = FirebaseAuth.getInstance().currentUser
-//        if (currentUser != null) {
-//            // If user is logged in, navigate to the main page
-//            val intent = Intent(this, Navigationpage ::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
-//    }
+    override fun onStart() {
+        super.onStart()
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null) {
+            // If user is logged in, navigate to the main page
+            val intent = Intent(this, Navigationpage ::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
